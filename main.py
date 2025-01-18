@@ -1,5 +1,5 @@
 import uvicorn
 
 if __name__ == '__main__':
-    uvicorn.run("app.fastapi_app:app", host="localhost", port=8910, reload=True)
+    uvicorn.run("app.fastapi_app:app", host="0.0.0.0", port=8910, reload=True)
 
