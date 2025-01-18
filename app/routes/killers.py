@@ -52,10 +52,9 @@ async def move_team(killerId: int):
 
     if response.status_code == 200:
         dict_data = xmltodict.parse(response.text)
-        json_string = dict_data.get("SOAP-ENV:Envelope", {}).get("SOAP-ENV:Body", {}).get("stringResponse", {}).get("ns2:string", "")
-        parsed_json = json.loads(json_string)
+        json_string = dict_data.get("SOAP-ENV:Envelope", {}).get("SOAP-ENV:Body", {}).get("DragonListResponse", {}).get("ns3:dragons", [])
 
-        return parsed_json
+        return json_string
     else:
         dict_data = xmltodict.parse(response.text)
         error_text = dict_data.get("SOAP-ENV:Envelope", {}).get("SOAP-ENV:Body", {}).get("SOAP-ENV:Fault", {}).get("faultstring", {}).get("#text", str(response.text))
